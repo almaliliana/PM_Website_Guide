@@ -2,24 +2,25 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: var(--font-sans); color: var(--color-text-primary); background: var(--color-background-primary); }
-nav { border-bottom: 0.5px solid var(--color-border-tertiary); padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--color-background-primary); z-index: 100; }
+nav { border-bottom: 0.5px solid var(--color-border-tertiary); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--color-background-primary); z-index: 100; flex-wrap: wrap; gap: 8px; }
 nav .logo { font-size: 15px; font-weight: 500; }
-nav .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
-nav .nav-links a { font-size: 12px; color: var(--color-text-secondary); text-decoration: none; padding: 4px 8px; border-radius: var(--border-radius-md); border: 0.5px solid transparent; }
+nav .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+nav .nav-links a { font-size: 11px; color: var(--color-text-secondary); text-decoration: none; padding: 4px 7px; border-radius: var(--border-radius-md); border: 0.5px solid transparent; }
 nav .nav-links a:hover { background: var(--color-background-secondary); border-color: var(--color-border-tertiary); }
-.hero { padding: 48px 24px 32px; max-width: 760px; margin: 0 auto; }
+.hero { padding: 48px 24px 32px; max-width: 780px; margin: 0 auto; }
 .hero h1 { font-size: 28px; font-weight: 500; margin-bottom: 12px; }
 .hero p { font-size: 15px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 20px; }
-.tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
-.tag { font-size: 12px; padding: 4px 10px; border-radius: 20px; border: 0.5px solid var(--color-border-tertiary); color: var(--color-text-secondary); cursor: pointer; }
-.tag:hover { background: var(--color-background-secondary); }
-.topics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; padding: 0 24px 40px; max-width: 760px; margin: 0 auto; }
-.topic-card { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 20px; cursor: pointer; transition: border-color 0.15s; }
-.topic-card:hover { border-color: var(--color-border-primary); background: var(--color-background-secondary); }
-.topic-card .icon { font-size: 20px; margin-bottom: 10px; }
-.topic-card h3 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
-.topic-card p { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
-.section { max-width: 760px; margin: 0 auto; padding: 0 24px 48px; display: none; }
+.tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+.tag { font-size: 12px; padding: 4px 10px; border-radius: 20px; border: 0.5px solid var(--color-border-tertiary); color: var(--color-text-secondary); }
+.hero-img { width: 100%; height: 220px; object-fit: cover; border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary); }
+.topics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; padding: 0 24px 40px; max-width: 780px; margin: 0 auto; }
+.topic-card { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; cursor: pointer; transition: border-color 0.15s; }
+.topic-card:hover { border-color: var(--color-border-primary); }
+.topic-card img { width: 100%; height: 100px; object-fit: cover; display: block; }
+.topic-card .card-body { padding: 12px; }
+.topic-card h3 { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+.topic-card p { font-size: 12px; color: var(--color-text-secondary); line-height: 1.4; }
+.section { max-width: 780px; margin: 0 auto; padding: 0 24px 48px; display: none; }
 .section.active { display: block; }
 .section h2 { font-size: 22px; font-weight: 500; margin-bottom: 6px; padding-top: 8px; }
 .section .subtitle { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 24px; border-bottom: 0.5px solid var(--color-border-tertiary); padding-bottom: 16px; }
@@ -28,15 +29,20 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
 .section ul { padding-left: 20px; margin-bottom: 12px; }
 .section ul li { font-size: 14px; line-height: 1.8; color: var(--color-text-secondary); }
 .callout { background: var(--color-background-secondary); border-left: 2px solid var(--color-border-secondary); border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; padding: 12px 16px; margin: 16px 0; font-size: 13px; color: var(--color-text-secondary); line-height: 1.7; }
+.video-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary); margin: 20px 0; }
+.video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.video-label { font-size: 12px; color: var(--color-text-tertiary); margin-top: -12px; margin-bottom: 16px; }
+.section-img { width: 100%; border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary); margin: 16px 0; object-fit: cover; max-height: 260px; }
+.img-caption { font-size: 12px; color: var(--color-text-tertiary); margin-top: -8px; margin-bottom: 16px; }
+.framework-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
+.framework-box { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 14px; }
+.framework-box h4 { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+.framework-box p { font-size: 12px; color: var(--color-text-secondary); margin: 0; line-height: 1.6; }
 .refs { margin-top: 32px; padding-top: 20px; border-top: 0.5px solid var(--color-border-tertiary); }
 .refs h4 { font-size: 13px; font-weight: 500; margin-bottom: 10px; color: var(--color-text-secondary); }
 .refs p { font-size: 12px; color: var(--color-text-tertiary); line-height: 1.7; margin-bottom: 6px; }
 .back-btn { font-size: 13px; color: var(--color-text-secondary); cursor: pointer; margin-bottom: 20px; display: inline-flex; align-items: center; gap: 4px; }
 .back-btn:hover { color: var(--color-text-primary); }
-.framework-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
-.framework-box { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 14px; }
-.framework-box h4 { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
-.framework-box p { font-size: 12px; color: var(--color-text-secondary); margin: 0; line-height: 1.6; }
 #home { display: block; }
 </style>
 
@@ -69,68 +75,56 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
       <span class="tag">Small business & charities</span>
       <span class="tag">Evidence-based</span>
     </div>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80" alt="Team collaborating on a project" />
   </div>
-
   <div class="topics-grid">
     <div class="topic-card" onclick="showSection('teams')">
-      <div class="icon">👥</div>
-      <h3>Teams</h3>
-      <p>How to build, manage and motivate effective project teams</p>
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=70" alt="Teams" />
+      <div class="card-body"><h3>Teams</h3><p>Build and manage effective project teams</p></div>
     </div>
     <div class="topic-card" onclick="showSection('risk')">
-      <div class="icon">⚠️</div>
-      <h3>Risk</h3>
-      <p>Identifying and managing risks before they derail your project</p>
+      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=70" alt="Risk" />
+      <div class="card-body"><h3>Risk</h3><p>Identify and manage project risks</p></div>
     </div>
     <div class="topic-card" onclick="showSection('leadership')">
-      <div class="icon">🧭</div>
-      <h3>Leadership</h3>
-      <p>Leading projects with purpose, clarity and confidence</p>
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=70" alt="Leadership" />
+      <div class="card-body"><h3>Leadership</h3><p>Lead with purpose and clarity</p></div>
     </div>
     <div class="topic-card" onclick="showSection('ethics')">
-      <div class="icon">⚖️</div>
-      <h3>Ethics</h3>
-      <p>Making ethical decisions and managing with integrity</p>
+      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&q=70" alt="Ethics" />
+      <div class="card-body"><h3>Ethics</h3><p>Manage with integrity</p></div>
     </div>
     <div class="topic-card" onclick="showSection('sustainability')">
-      <div class="icon">🌱</div>
-      <h3>Sustainability</h3>
-      <p>Embedding sustainable thinking into your projects</p>
+      <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=400&q=70" alt="Sustainability" />
+      <div class="card-body"><h3>Sustainability</h3><p>Embed sustainable thinking</p></div>
     </div>
     <div class="topic-card" onclick="showSection('governance')">
-      <div class="icon">🏛️</div>
-      <h3>Governance</h3>
-      <p>Structures, accountability and oversight for better outcomes</p>
+      <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400&q=70" alt="Governance" />
+      <div class="card-body"><h3>Governance</h3><p>Structures and accountability</p></div>
     </div>
     <div class="topic-card" onclick="showSection('strategy')">
-      <div class="icon">🎯</div>
-      <h3>Strategy</h3>
-      <p>Aligning your project with organisational goals</p>
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=70" alt="Strategy" />
+      <div class="card-body"><h3>Strategy</h3><p>Align projects to your goals</p></div>
     </div>
     <div class="topic-card" onclick="showSection('planning')">
-      <div class="icon">📋</div>
-      <h3>Planning</h3>
-      <p>From project brief to workable plan — step by step</p>
+      <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&q=70" alt="Planning" />
+      <div class="card-body"><h3>Planning</h3><p>From brief to workable plan</p></div>
     </div>
     <div class="topic-card" onclick="showSection('implementation')">
-      <div class="icon">🚀</div>
-      <h3>Implementation</h3>
-      <p>Delivering your project on time and on budget</p>
+      <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&q=70" alt="Implementation" />
+      <div class="card-body"><h3>Implementation</h3><p>Deliver on time and budget</p></div>
     </div>
     <div class="topic-card" onclick="showSection('stakeholders')">
-      <div class="icon">🤝</div>
-      <h3>Stakeholders</h3>
-      <p>Engaging the people who matter to your project's success</p>
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&q=70" alt="Stakeholders" />
+      <div class="card-body"><h3>Stakeholders</h3><p>Engage the people who matter</p></div>
     </div>
     <div class="topic-card" onclick="showSection('methodologies')">
-      <div class="icon">🔁</div>
-      <h3>Methodologies</h3>
-      <p>Waterfall, Agile, PRINCE2 — which approach suits you?</p>
+      <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=70" alt="Methodologies" />
+      <div class="card-body"><h3>Methodologies</h3><p>Waterfall, Agile, PRINCE2</p></div>
     </div>
     <div class="topic-card" onclick="showSection('ai')">
-      <div class="icon">🤖</div>
-      <h3>AI in PM</h3>
-      <p>How AI tools are changing project management</p>
+      <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&q=70" alt="AI" />
+      <div class="card-body"><h3>AI in PM</h3><p>How AI is changing projects</p></div>
     </div>
   </div>
 </div>
@@ -140,9 +134,14 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
   <span class="back-btn" onclick="showHome()">← Back to all topics</span>
   <h2>Teams</h2>
   <p class="subtitle">Building and managing effective project teams in small organisations</p>
+  <img class="section-img" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80" alt="Team working together" />
+  <p class="img-caption">Effective project teams are built on clear roles, trust and open communication.</p>
   <h3>Why teams matter in project management</h3>
   <p>Projects are delivered by people, not plans. In small businesses and charities, you often work with small, multi-functional teams — sometimes volunteers, sometimes part-time staff. Understanding how teams form and perform is essential to project success.</p>
   <div class="callout">Tuckman (1965) identified four stages of team development: Forming, Storming, Norming and Performing. Most teams experience conflict during the "Storming" phase — this is normal and manageable with strong facilitation.</div>
+  <h3>Watch: Tuckman's stages of team development</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/OhSdo2o7oMg" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: Tuckman's model explained — useful for understanding how your project team evolves over time.</p>
   <h3>Building your project team</h3>
   <p>Start by mapping the skills your project needs, then identify who in your organisation (or network) can fill those roles. In small organisations, people often wear multiple hats — be honest about capacity and avoid overloading key individuals.</p>
   <ul>
@@ -151,13 +150,14 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
     <li>Create a team charter outlining how decisions will be made and conflicts resolved</li>
     <li>Schedule regular check-ins — weekly standups work well for small teams</li>
   </ul>
-  <h3>Managing volunteers and mixed teams</h3>
-  <p>Charities frequently manage teams that include paid staff and volunteers. The PMI (2021) notes that volunteer motivation differs significantly from employee motivation — volunteers are driven by purpose and connection, not financial reward. Recognise contributions publicly, ensure volunteers have meaningful roles, and be flexible about time commitments.</p>
+  <h3>Watch: How to build high-performing teams</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/hHIikHJV9fI" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: Google's Project Aristotle research — what actually makes teams effective.</p>
   <div class="framework-grid">
     <div class="framework-box"><h4>RACI Matrix</h4><p>Clarifies who does what on every task. Essential for small teams where roles overlap.</p></div>
     <div class="framework-box"><h4>Team Charter</h4><p>A one-page agreement on how the team will work together, communicate and resolve disagreements.</p></div>
     <div class="framework-box"><h4>Tuckman Model</h4><p>Forming → Storming → Norming → Performing. Helps you anticipate team dynamics.</p></div>
-    <div class="framework-box"><h4>Regular standups</h4><p>Short daily or weekly check-ins keep small teams aligned without heavy bureaucracy.</p></div>
+    <div class="framework-box"><h4>Belbin Roles</h4><p>Nine team role types (e.g. Plant, Coordinator, Implementer). Helps you understand strengths and gaps.</p></div>
   </div>
   <div class="refs">
     <h4>Key references</h4>
@@ -173,9 +173,14 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
   <span class="back-btn" onclick="showHome()">← Back to all topics</span>
   <h2>Risk</h2>
   <p class="subtitle">Identifying, assessing and managing risk in your projects</p>
+  <img class="section-img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80" alt="Risk management" />
+  <p class="img-caption">Risk management is about making informed decisions — not eliminating uncertainty entirely.</p>
   <h3>What is project risk?</h3>
   <p>A risk is any uncertain event that, if it occurs, could affect your project's objectives. Risks can be positive (opportunities) as well as negative (threats). Effective risk management is not about eliminating risk — it's about making informed decisions about which risks to accept, mitigate or transfer.</p>
   <div class="callout">The ISO 31000:2018 standard defines risk management as "coordinated activities to direct and control an organisation with regard to risk." It provides a useful, accessible framework for small organisations.</div>
+  <h3>Watch: Introduction to project risk management</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/Xq1ydnpKdxI" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: Project risk management fundamentals — identification, assessment and response strategies.</p>
   <h3>The risk management process</h3>
   <ul>
     <li><strong>Identify:</strong> Brainstorm risks with your team. Use a risk register to document them.</li>
@@ -183,8 +188,8 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
     <li><strong>Respond:</strong> For each significant risk, decide: Avoid, Mitigate, Transfer or Accept.</li>
     <li><strong>Monitor:</strong> Review your risk register regularly throughout the project lifecycle.</li>
   </ul>
-  <h3>The risk register</h3>
-  <p>A risk register is a simple log — often a spreadsheet — that records each identified risk, its likelihood, impact, owner and response plan. Keep it live throughout your project. In small organisations, even a basic register is far better than none at all.</p>
+  <img class="section-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80" alt="Risk matrix" style="max-height:200px;" />
+  <p class="img-caption">A simple probability-impact matrix helps you prioritise which risks need most attention.</p>
   <h3>Common risks for Irish small businesses and charities</h3>
   <ul>
     <li>Funding dependency — over-reliance on a single funder or grant</li>
@@ -207,24 +212,28 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
   <span class="back-btn" onclick="showHome()">← Back to all topics</span>
   <h2>Leadership</h2>
   <p class="subtitle">Leading projects and people with clarity and purpose</p>
+  <img class="section-img" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80" alt="Leadership" />
+  <p class="img-caption">Strong project leadership is about inspiring people as much as managing tasks.</p>
   <h3>Leadership vs management</h3>
   <p>Management is about systems and processes; leadership is about people and direction. Kotter (1990) drew a classic distinction: managers cope with complexity, leaders cope with change. As a project lead in a small organisation, you need both — but don't underestimate the human side of the role.</p>
-  <h3>Key leadership styles in project contexts</h3>
+  <h3>Watch: Leadership styles explained</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/v2PaZ8Nl2vs" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: Key leadership styles and when to use each — transformational, servant, transactional and situational.</p>
   <div class="framework-grid">
     <div class="framework-box"><h4>Transformational</h4><p>Inspires change through vision and purpose. Works well in charities with a strong mission.</p></div>
     <div class="framework-box"><h4>Servant leadership</h4><p>Prioritises the team's needs. Effective in volunteer-led or community organisations.</p></div>
     <div class="framework-box"><h4>Transactional</h4><p>Reward/penalty based. Useful for clear task delivery but limits creativity.</p></div>
     <div class="framework-box"><h4>Situational</h4><p>Adapts style to context and team maturity. Often most practical for project work.</p></div>
   </div>
-  <h3>Emotional intelligence in leadership</h3>
-  <p>Goleman (1995) identified emotional intelligence (EQ) as a critical factor in effective leadership — more important than IQ in many contexts. For project managers leading small teams, self-awareness, empathy and social skills are particularly valuable. EQ allows you to read team dynamics, manage conflict constructively and maintain trust under pressure.</p>
-  <div class="callout">Research by the Chartered Management Institute (CMI, 2023) found that 82% of people who leave jobs cite their manager, not the job itself, as the primary reason. Strong project leadership reduces turnover and increases commitment.</div>
+  <h3>Watch: Emotional intelligence in leadership</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/Y7m9eNoB3NU" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: Daniel Goleman on emotional intelligence — why EQ matters more than IQ for leaders.</p>
   <div class="refs">
     <h4>Key references</h4>
     <p>Kotter, J.P. (1990). <em>A Force for Change: How Leadership Differs from Management</em>. New York: Free Press.</p>
     <p>Goleman, D. (1995). <em>Emotional Intelligence</em>. New York: Bantam Books.</p>
     <p>Hersey, P. and Blanchard, K.H. (1969). 'Life cycle theory of leadership', <em>Training and Development Journal</em>, 23(5), pp. 26–34.</p>
-    <p>CMI (2023). <em>Management Transformed: Managing in a New World of Work</em>. Chartered Management Institute.</p>
+    <p>CMI (2023). <em>Management Transformed</em>. Chartered Management Institute.</p>
   </div>
 </div>
 
@@ -233,23 +242,25 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
   <span class="back-btn" onclick="showHome()">← Back to all topics</span>
   <h2>Ethics</h2>
   <p class="subtitle">Managing projects with integrity and ethical responsibility</p>
+  <img class="section-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80" alt="Ethics and integrity" />
+  <p class="img-caption">Ethical project management builds trust with every stakeholder — staff, clients and the public.</p>
   <h3>Why ethics matter in project management</h3>
   <p>Ethical project management means making decisions that are fair, transparent, honest and respectful of all stakeholders. For charities, this is especially critical — public trust is a core asset. For small businesses, ethical practice builds lasting reputation and client loyalty.</p>
+  <h3>Watch: Ethics in project management</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/8SOQduoLFnU" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: PMI's code of ethics — responsibility, respect, fairness and honesty in practice.</p>
   <h3>The PMI Code of Ethics</h3>
-  <p>The Project Management Institute's Code of Ethics (2006) identifies four core values: Responsibility, Respect, Fairness and Honesty. These provide a practical framework for decision-making when facing ethical dilemmas in a project context.</p>
   <ul>
     <li><strong>Responsibility:</strong> Own your decisions and their consequences</li>
     <li><strong>Respect:</strong> Treat team members, clients and stakeholders with dignity</li>
     <li><strong>Fairness:</strong> Be impartial and transparent in decision-making</li>
     <li><strong>Honesty:</strong> Communicate truthfully, even when delivering bad news</li>
   </ul>
-  <h3>Ethical challenges in Irish organisations</h3>
-  <p>Common ethical issues in Irish small business and charity projects include: procurement practices, conflicts of interest on small boards, data privacy (GDPR), fair treatment of volunteers and whistleblowing. The Charities Regulator's Governance Code (2023) sets clear expectations for ethical governance in the sector.</p>
   <div class="callout">The Speak Up culture — encouraging team members to raise concerns without fear — is now considered a governance best practice. Create a simple informal channel for raising issues early before they escalate.</div>
   <div class="refs">
     <h4>Key references</h4>
     <p>PMI (2006). <em>PMI Code of Ethics and Professional Conduct</em>. Project Management Institute.</p>
-    <p>Treviño, L.K. and Nelson, K.A. (2021). <em>Managing Business Ethics: Straight Talk About How to Do It Right</em>. 8th edn. Wiley.</p>
+    <p>Treviño, L.K. and Nelson, K.A. (2021). <em>Managing Business Ethics</em>. 8th edn. Wiley.</p>
     <p>Charities Regulator Ireland (2023). <em>Governance Code</em>. Available at: www.charitiesregulator.ie</p>
     <p>IBEC (2022). <em>Business Ethics Guidelines for Irish SMEs</em>. Irish Business and Employers Confederation.</p>
   </div>
@@ -260,23 +271,19 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
   <span class="back-btn" onclick="showHome()">← Back to all topics</span>
   <h2>Sustainability</h2>
   <p class="subtitle">Embedding environmental and social sustainability into your projects</p>
+  <img class="section-img" src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=1200&q=80" alt="Sustainability" />
+  <p class="img-caption">Sustainable project management considers people, planet and long-term viability in every decision.</p>
   <h3>What is sustainable project management?</h3>
   <p>Sustainable project management integrates economic, social and environmental considerations into how projects are planned and delivered. The UN's Sustainable Development Goals (SDGs, 2015) provide a widely-used framework for aligning project outcomes with broader societal goals.</p>
-  <h3>The triple bottom line</h3>
-  <p>Elkington's (1997) "triple bottom line" concept — People, Planet, Profit — remains a useful lens. Projects should aim to create value that is socially equitable, environmentally responsible and economically viable. For Irish charities, the "profit" dimension is replaced with long-term financial sustainability.</p>
+  <h3>Watch: Introduction to the UN Sustainable Development Goals</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/0XTBYMfZyrM" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: UN SDGs explained — how organisations can align their projects to the global sustainability agenda.</p>
   <div class="framework-grid">
     <div class="framework-box"><h4>People</h4><p>Fair employment, volunteer wellbeing, community benefit and inclusivity in project delivery.</p></div>
     <div class="framework-box"><h4>Planet</h4><p>Reducing waste, cutting carbon, choosing sustainable suppliers and minimising environmental impact.</p></div>
     <div class="framework-box"><h4>Profit / Viability</h4><p>Ensuring the project creates lasting value, not just short-term outputs.</p></div>
     <div class="framework-box"><h4>SDGs</h4><p>Map your project to relevant UN SDGs to demonstrate social and environmental impact to funders.</p></div>
   </div>
-  <h3>Practical steps for small organisations</h3>
-  <ul>
-    <li>Include a sustainability section in your project plan</li>
-    <li>Choose local or Irish suppliers where possible to reduce carbon footprint</li>
-    <li>Measure and report on social impact — not just financial outcomes</li>
-    <li>Consult Green Business Ireland or the EPA's SME guidance for practical tools</li>
-  </ul>
   <div class="refs">
     <h4>Key references</h4>
     <p>Elkington, J. (1997). <em>Cannibals with Forks: The Triple Bottom Line of 21st Century Business</em>. Oxford: Capstone.</p>
@@ -291,18 +298,21 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
   <span class="back-btn" onclick="showHome()">← Back to all topics</span>
   <h2>Governance</h2>
   <p class="subtitle">Structures, accountability and oversight for better project outcomes</p>
+  <img class="section-img" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&q=80" alt="Governance" />
+  <p class="img-caption">Good governance gives projects clear accountability structures and decision-making frameworks.</p>
   <h3>What is project governance?</h3>
-  <p>Project governance is the framework of rules, responsibilities and practices that ensure projects are run with appropriate oversight and accountability. It answers the question: "Who decides what, and how?" Good governance prevents scope creep, budget overruns and unethical practices.</p>
-  <h3>Governance in Irish charities</h3>
-  <p>The Charities Regulator's Governance Code (2023) is the primary reference for Irish charitable organisations. It sets out five principles: Advancing the charitable purpose; Operating with integrity; Leading the charity effectively; Exercising control; and Being accountable and transparent. These principles apply directly to how projects within charities should be governed.</p>
-  <div class="callout">For small charities, good governance doesn't require bureaucracy. A clear project brief, a named decision-maker, a simple reporting structure and documented minutes are often sufficient.</div>
-  <h3>Key governance structures for projects</h3>
+  <p>Project governance is the framework of rules, responsibilities and practices that ensure projects are run with appropriate oversight and accountability. Good governance prevents scope creep, budget overruns and unethical practices.</p>
+  <h3>Watch: Project governance explained</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/E_hXi_aVWrk" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: What is project governance? Roles, structures and why it matters for delivery.</p>
+  <h3>Key governance structures</h3>
   <ul>
     <li><strong>Project Sponsor:</strong> Senior person accountable for the project's success</li>
     <li><strong>Project Manager:</strong> Day-to-day delivery lead</li>
     <li><strong>Steering Group:</strong> Oversight body that reviews progress and approves key decisions</li>
     <li><strong>Project Board:</strong> In PRINCE2, the formal governance body comprising sponsor, senior user and senior supplier</li>
   </ul>
+  <div class="callout">For small charities, good governance doesn't require bureaucracy. A clear project brief, a named decision-maker, a simple reporting structure and documented minutes are often sufficient.</div>
   <div class="refs">
     <h4>Key references</h4>
     <p>Charities Regulator Ireland (2023). <em>Governance Code for Community, Voluntary and Charitable Organisations in Ireland</em>. Available at: www.charitiesregulator.ie</p>
@@ -317,17 +327,19 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
   <span class="back-btn" onclick="showHome()">← Back to all topics</span>
   <h2>Strategy</h2>
   <p class="subtitle">Connecting your project to your organisation's bigger picture</p>
+  <img class="section-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Strategy" />
+  <p class="img-caption">Strategic alignment ensures every project contributes to your organisation's mission and goals.</p>
   <h3>Strategic alignment</h3>
   <p>Every project should serve a strategic purpose. Before beginning any project, ask: how does this contribute to our organisational mission and goals? Projects that lack strategic alignment often lose momentum, struggle to secure resources and fail to deliver lasting value.</p>
-  <h3>Tools for strategic analysis</h3>
+  <h3>Watch: SWOT analysis explained</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/JXXHqM6RzZQ" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: How to conduct a SWOT analysis for your project or organisation.</p>
   <div class="framework-grid">
-    <div class="framework-box"><h4>SWOT Analysis</h4><p>Strengths, Weaknesses, Opportunities, Threats. Useful for assessing organisational readiness for a project.</p></div>
-    <div class="framework-box"><h4>PESTLE Analysis</h4><p>Political, Economic, Social, Technological, Legal, Environmental. Maps the external environment affecting your project.</p></div>
-    <div class="framework-box"><h4>Logic Model</h4><p>Links inputs → activities → outputs → outcomes. Widely used by Irish funders to evaluate project proposals.</p></div>
-    <div class="framework-box"><h4>Balanced Scorecard</h4><p>Tracks performance across financial, customer, internal process and learning dimensions (Kaplan & Norton, 1996).</p></div>
+    <div class="framework-box"><h4>SWOT Analysis</h4><p>Strengths, Weaknesses, Opportunities, Threats. Assesses organisational readiness for a project.</p></div>
+    <div class="framework-box"><h4>PESTLE Analysis</h4><p>Political, Economic, Social, Technological, Legal, Environmental. Maps the external context.</p></div>
+    <div class="framework-box"><h4>Logic Model</h4><p>Links inputs → activities → outputs → outcomes. Widely used by Irish funders.</p></div>
+    <div class="framework-box"><h4>Balanced Scorecard</h4><p>Tracks performance across financial, customer, internal process and learning dimensions.</p></div>
   </div>
-  <h3>Strategy in small organisations</h3>
-  <p>Small businesses and charities often operate without formal strategy documents. Mintzberg (1994) distinguished between deliberate strategies (planned) and emergent strategies (evolved through practice). In small organisations, strategy is often emergent — and that's fine, as long as there is enough direction to prioritise projects and allocate resources effectively.</p>
   <div class="refs">
     <h4>Key references</h4>
     <p>Mintzberg, H. (1994). <em>The Rise and Fall of Strategic Planning</em>. New York: Free Press.</p>
@@ -342,8 +354,13 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
   <span class="back-btn" onclick="showHome()">← Back to all topics</span>
   <h2>Planning</h2>
   <p class="subtitle">From project brief to workable plan, step by step</p>
+  <img class="section-img" src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=1200&q=80" alt="Project planning" />
+  <p class="img-caption">A good project plan doesn't need to be complex — it needs to be honest, realistic and shared with the team.</p>
   <h3>Why planning matters</h3>
-  <p>The Standish Group's CHAOS Report (2020) found that poor planning is the leading cause of project failure globally. Yet many small organisations skip or rush planning in favour of "just getting started." A well-structured plan does not need to be complex — it needs to be honest, realistic and shared.</p>
+  <p>The Standish Group's CHAOS Report (2020) found that poor planning is the leading cause of project failure globally. A well-structured plan does not need to be complex — it needs to be honest, realistic and shared.</p>
+  <h3>Watch: How to create a project plan</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/TiNSWp7_ZSA" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: Step-by-step guide to building a project plan — scope, WBS, timeline and resource allocation.</p>
   <h3>The project planning process</h3>
   <ul>
     <li><strong>Define scope:</strong> What is included and excluded? Agree this in writing with your sponsor.</li>
@@ -354,14 +371,12 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
     <li><strong>Plan for risk:</strong> Build contingency time and budget into your plan from the start.</li>
   </ul>
   <div class="callout">A useful rule of thumb: your plan is wrong. That's okay. The value of planning is not the document — it's the thinking. Review and update your plan regularly as you learn more.</div>
-  <h3>Free planning tools for small organisations</h3>
-  <p>You don't need expensive software. Trello (free), Asana (free tier), Google Sheets and even a whiteboard can serve most small project planning needs. The best tool is the one your team will actually use.</p>
   <div class="refs">
     <h4>Key references</h4>
     <p>Standish Group (2020). <em>CHAOS Report 2020: Beyond Infinity</em>. The Standish Group International.</p>
-    <p>Kerzner, H. (2022). <em>Project Management: A Systems Approach to Planning, Scheduling and Controlling</em>. 13th edn. Wiley.</p>
+    <p>Kerzner, H. (2022). <em>Project Management: A Systems Approach</em>. 13th edn. Wiley.</p>
     <p>Lock, D. (2020). <em>Project Management</em>. 11th edn. Farnham: Gower.</p>
-    <p>Poject Management Institute (2021). <em>PMBOK Guide</em>, 7th edn.</p>
+    <p>PMI (2021). <em>PMBOK Guide</em>. 7th edn.</p>
   </div>
 </div>
 
@@ -370,18 +385,19 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
   <span class="back-btn" onclick="showHome()">← Back to all topics</span>
   <h2>Implementation</h2>
   <p class="subtitle">Delivering your project on time, on budget and to scope</p>
+  <img class="section-img" src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&q=80" alt="Project delivery" />
+  <p class="img-caption">The delivery phase is where plans meet reality — monitoring, adapting and communicating are key.</p>
   <h3>The delivery phase</h3>
-  <p>Implementation is where plans meet reality. This is the longest and most unpredictable phase of most projects. The key disciplines are: consistent monitoring and control, clear communication with stakeholders, managing scope change and maintaining team motivation.</p>
-  <h3>Monitor and control</h3>
-  <p>Use a simple status report (weekly or fortnightly) to track progress against plan. The Earned Value Management (EVM) approach — comparing planned vs actual work and cost — is used in large projects but the underlying principle (is the work on track?) applies to all projects regardless of size.</p>
+  <p>Implementation is where plans meet reality. The key disciplines are: consistent monitoring and control, clear communication with stakeholders, managing scope change and maintaining team motivation.</p>
+  <h3>Watch: Project monitoring and control</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/qHMUnZnrkQg" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: How to monitor and control a project in execution — status reports, change control and issue management.</p>
   <div class="framework-grid">
-    <div class="framework-box"><h4>Status reporting</h4><p>RAG (Red / Amber / Green) status on time, cost, scope and risk. Simple and effective.</p></div>
+    <div class="framework-box"><h4>RAG status</h4><p>Red / Amber / Green reporting on time, cost, scope and risk. Simple and universally understood.</p></div>
     <div class="framework-box"><h4>Change control</h4><p>Any change to scope, budget or timeline should be documented and approved. Prevents scope creep.</p></div>
     <div class="framework-box"><h4>Issue log</h4><p>Record issues as they arise with owner and resolution date. Different from risks — issues have already occurred.</p></div>
     <div class="framework-box"><h4>Lessons learned</h4><p>Document what worked and what didn't throughout delivery, not just at the end.</p></div>
   </div>
-  <h3>Project closure</h3>
-  <p>Close your project formally. This means: confirming deliverables have been accepted, completing a lessons-learned review, archiving documentation, releasing team members and communicating outcomes to stakeholders. Closure is often skipped but is essential for organisational learning.</p>
   <div class="refs">
     <h4>Key references</h4>
     <p>PMI (2021). <em>PMBOK Guide</em>. 7th edn. Project Management Institute.</p>
@@ -396,10 +412,13 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
   <span class="back-btn" onclick="showHome()">← Back to all topics</span>
   <h2>Stakeholders</h2>
   <p class="subtitle">Identifying and engaging the people who matter to your project</p>
+  <img class="section-img" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80" alt="Stakeholder engagement" />
+  <p class="img-caption">Stakeholder engagement is not a one-time activity — it needs to happen throughout the project lifecycle.</p>
   <h3>Who are stakeholders?</h3>
   <p>A stakeholder is anyone who affects or is affected by your project. For Irish small businesses and charities, stakeholders typically include: funders, board members, staff, volunteers, service users, partner organisations, local authorities and the broader community.</p>
-  <h3>Stakeholder mapping</h3>
-  <p>Freeman's (1984) stakeholder theory established that organisations must account for all those with a stake in their activities. The classic power-interest grid divides stakeholders into four quadrants: Manage closely (high power, high interest), Keep satisfied (high power, low interest), Keep informed (low power, high interest), Monitor (low power, low interest).</p>
+  <h3>Watch: Stakeholder management explained</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/dKoIKDOTCHs" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: How to identify, map and engage stakeholders effectively throughout your project.</p>
   <div class="callout">In charities, service users are often low-power but high-interest stakeholders. Ethical project management means prioritising their voice even when they lack formal power to influence decisions.</div>
   <h3>Stakeholder engagement plan</h3>
   <ul>
@@ -411,8 +430,8 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
   <div class="refs">
     <h4>Key references</h4>
     <p>Freeman, R.E. (1984). <em>Strategic Management: A Stakeholder Approach</em>. Boston: Pitman.</p>
-    <p>Bourne, L. (2015). <em>Making Projects Work: Effective Stakeholder and Communication Management</em>. Boca Raton: CRC Press.</p>
-    <p>Mendelow, A. (1991). 'Stakeholder mapping', Proceedings of the 2nd International Conference on Information Systems, Cambridge, MA.</p>
+    <p>Bourne, L. (2015). <em>Making Projects Work</em>. Boca Raton: CRC Press.</p>
+    <p>Mendelow, A. (1991). 'Stakeholder mapping', Proceedings of the 2nd International Conference on Information Systems.</p>
     <p>PMI (2021). <em>PMBOK Guide</em>. 7th edn.</p>
   </div>
 </div>
@@ -422,22 +441,28 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
   <span class="back-btn" onclick="showHome()">← Back to all topics</span>
   <h2>Methodologies</h2>
   <p class="subtitle">Choosing the right approach for your project</p>
+  <img class="section-img" src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&q=80" alt="Methodologies" />
+  <p class="img-caption">The right methodology depends on your project's complexity, team size and how well-defined the requirements are.</p>
   <h3>Why methodology matters</h3>
-  <p>A project methodology is a structured set of principles and practices for managing projects. Choosing the right one for your context improves predictability, communication and outcomes. The wrong methodology — or no methodology — is a common source of project failure.</p>
+  <p>A project methodology is a structured set of principles and practices for managing projects. Choosing the right one for your context improves predictability, communication and outcomes.</p>
+  <h3>Watch: Agile vs Waterfall explained</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/5RoczoSJ6-E" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: Agile vs Waterfall — a clear comparison of when to use each approach.</p>
+  <h3>Watch: PRINCE2 overview</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/cFCjUGHFnhc" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: PRINCE2 explained — the principles, themes and processes of the world's most widely used PM methodology.</p>
   <div class="framework-grid">
-    <div class="framework-box"><h4>Waterfall</h4><p>Linear, sequential phases. Best for projects with fixed scope and clear requirements. Common in construction and IT infrastructure.</p></div>
-    <div class="framework-box"><h4>Agile</h4><p>Iterative, flexible delivery in short sprints. Best for projects where requirements evolve. Common in software, product and service design.</p></div>
-    <div class="framework-box"><h4>PRINCE2</h4><p>Process-based UK methodology. Strong on governance and roles. Popular in public sector and larger organisations. Free Foundation training available.</p></div>
-    <div class="framework-box"><h4>Hybrid</h4><p>Combines waterfall planning with agile delivery. Increasingly common in small organisations that need structure but also flexibility.</p></div>
+    <div class="framework-box"><h4>Waterfall</h4><p>Linear, sequential phases. Best for projects with fixed scope and clear requirements.</p></div>
+    <div class="framework-box"><h4>Agile</h4><p>Iterative, flexible delivery in short sprints. Best when requirements evolve.</p></div>
+    <div class="framework-box"><h4>PRINCE2</h4><p>Process-based methodology. Strong on governance and roles. Popular in public sector.</p></div>
+    <div class="framework-box"><h4>Hybrid</h4><p>Combines waterfall planning with agile delivery. Increasingly common in small organisations.</p></div>
   </div>
-  <h3>Which methodology suits small organisations?</h3>
-  <p>For most Irish small businesses and charities, a lightweight hybrid approach works best. Use waterfall-style planning (clear scope, timeline and budget) with agile-style delivery (short iterations, regular reviews and flexibility to adapt). Full PRINCE2 implementation can be too heavy for small teams, but its principles — business case, defined roles, managed stages — are universally valuable.</p>
   <div class="refs">
     <h4>Key references</h4>
     <p>AXELOS (2017). <em>Managing Successful Projects with PRINCE2</em>. 6th edn. London: The Stationery Office.</p>
     <p>Schwaber, K. and Sutherland, J. (2020). <em>The Scrum Guide</em>. Available at: www.scrumguides.org</p>
     <p>PMI (2021). <em>PMBOK Guide</em>. 7th edn.</p>
-    <p>Highsmith, J. (2009). <em>Agile Project Management: Creating Innovative Products</em>. 2nd edn. Boston: Addison-Wesley.</p>
+    <p>Highsmith, J. (2009). <em>Agile Project Management</em>. 2nd edn. Boston: Addison-Wesley.</p>
   </div>
 </div>
 
@@ -446,18 +471,21 @@ nav .nav-links a:hover { background: var(--color-background-secondary); border-c
   <span class="back-btn" onclick="showHome()">← Back to all topics</span>
   <h2>AI in project management</h2>
   <p class="subtitle">How artificial intelligence is changing how projects are planned and delivered</p>
+  <img class="section-img" src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80" alt="AI in project management" />
+  <p class="img-caption">AI tools are making project management more accessible for small teams — but human judgement remains essential.</p>
   <h3>AI and the project manager</h3>
-  <p>Artificial intelligence is increasingly embedded in project management tools. From automated scheduling and risk prediction to natural language reporting and meeting transcription, AI offers significant productivity gains — particularly for small teams with limited administrative capacity.</p>
+  <p>Artificial intelligence is increasingly embedded in project management tools. From automated scheduling and risk prediction to natural language reporting and meeting transcription, AI offers significant productivity gains for small teams.</p>
+  <h3>Watch: AI in project management</h3>
+  <div class="video-wrap"><iframe src="https://www.youtube.com/embed/F3plxNq4KN0" allowfullscreen loading="lazy"></iframe></div>
+  <p class="video-label">Video: How AI is transforming project management — tools, applications and what PMs need to know.</p>
   <h3>Practical AI tools for small organisations</h3>
   <ul>
     <li><strong>Meeting summaries:</strong> Tools like Otter.ai and Microsoft Copilot automatically transcribe and summarise meetings</li>
     <li><strong>Task automation:</strong> Asana, Monday.com and ClickUp use AI to suggest task prioritisation and flag risks</li>
-    <li><strong>Document drafting:</strong> AI writing assistants can produce first drafts of project plans, reports and stakeholder updates</li>
-    <li><strong>Data analysis:</strong> AI tools can identify patterns in project data — budget variances, delivery delays — faster than manual review</li>
+    <li><strong>Document drafting:</strong> AI writing assistants can produce first drafts of project plans and stakeholder updates</li>
+    <li><strong>Data analysis:</strong> AI tools can identify patterns in project data faster than manual review</li>
   </ul>
-  <h3>Risks and ethical considerations</h3>
-  <p>The use of AI in project management raises important questions. The EU AI Act (2024) introduces regulatory requirements for AI systems used in high-risk contexts. For charities and public-facing organisations, data privacy (GDPR), algorithmic bias and transparency are key concerns. Shenhar and Dvir (2007) argue that projects are fundamentally human endeavours — AI should augment, not replace, human judgement.</p>
-  <div class="callout">The PMI's <em>AI in Project Management</em> report (2023) found that 21% of project managers already use AI regularly, and over 80% expect significant AI integration within five years. Understanding AI is now a core project management skill.</div>
+  <div class="callout">The PMI's AI in Project Management report (2023) found that 21% of project managers already use AI regularly, and over 80% expect significant AI integration within five years. Understanding AI is now a core project management skill.</div>
   <div class="refs">
     <h4>Key references</h4>
     <p>PMI (2023). <em>AI in Project Management</em>. Project Management Institute.</p>
